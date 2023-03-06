@@ -30,6 +30,7 @@ public:
 
         if (sum % 2 == 1)
             return false;
+            
         vector<vector<int>> dp(nums.size(), vector<int>((sum/2) + 1,  -1));
         if(helper(nums.size() - 1, sum / 2, nums, dp) == 1) return true;
         return false;
