@@ -13,6 +13,7 @@ public:
                     string row = "row" + to_string(i) + board[i][j];
                     string col = "col" + to_string(j) + board[i][j];
                     string part = "part" + to_string((i / 3) * 3 + (j / 3)) + board[i][j];
+                    
                     if (s.find(row) == s.end() and s.find(col) == s.end() and s.find(part) == s.end())
                     {
                         s.insert(row);
