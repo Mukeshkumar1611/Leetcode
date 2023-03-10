@@ -1,8 +1,7 @@
 class Solution
 {
 public:
-    int helper(int idx, int k, vector<int> &nums, vector<vector<int>> &dp)
-    {
+    int helper(int idx, int k, vector<int> &nums, vector<vector<int>> &dp){
         if (k == 0)
             return 1;
         if (idx == 0)
