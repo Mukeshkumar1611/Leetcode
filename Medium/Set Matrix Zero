@@ -1,6 +1,7 @@
 class Solution {
 public:
-    void setZeroes(vector<vector<int>>& matrix) {
+    void setZeroes(vector<vector<int>>& matrix) 
+    {
         vector<pair<int, int>> freq;
 
         int row = matrix.size();
