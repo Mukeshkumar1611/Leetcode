@@ -1,46 +1,50 @@
-class Solution {
+class Solution 
+{
 public:
-    int minSizeSubarray(vector<int>& nums, int target) {
+    int minSizeSubarray(vector<int>& nums, int target) 
+    {
         int n = nums.size();
-        int ans = INT_MAX;
+        long long int total_sum = 0;
+        for(int i = 0; i < n; i++)
+        {
+            total_sum += nums[i];
+        }
+        
+        int ans = 0;
+        if(total_sum < target)
+        {
+            ans = (nums.size() * (target / total_sum));
+            target = target % total_sum;
+        }
         
         n = n * 2;
-        long long int totalSum = 0;
-        for(auto it : nums)
-        {
-            totalSum += it;
-        }
-        
-        if(totalSum < target)
-        {
-            n = n * 100;
-        }
-        
         int i = 0;
         int j = 0;
-        
-        long long int sum = 0;
+        bool flag = 0;
+        int temp = 1e9;
+        long long int currSum = 0;
         
         while(j < n)
         {
-            sum = sum + nums[j % nums.size()];
-            if(sum == target)
+            currSum = currSum + nums[j % nums.size()];
+            if(currSum == target)
             {
-                ans = min(ans, j - i + 1);
+                flag = 1;
+                temp = min(temp, j - i + 1);
             }
-            
-            while(sum >= target)
+            while(currSum >= target)
             {
-                sum = sum - nums[i % nums.size()];
+                currSum = currSum - nums[i % nums.size()];
                 i++;
-                if(sum == target)
+                if(currSum == target)
                 {
-                    ans = min(ans, j - i + 1);
+                    flag = 1;
+                    temp = min(temp, j - i + 1);
                 }
             }
             j++;
         }
-        if(ans != INT_MAX) return ans;
-        return -1;
+        if(temp == 1e9 || !flag) return -1;
+        return ans + temp;
     }
 };
