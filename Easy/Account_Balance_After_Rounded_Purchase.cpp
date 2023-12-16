@@ -1,6 +1,8 @@
-class Solution {
+class Solution 
+{
 public:
-    int accountBalanceAfterPurchase(int n) {
+    int accountBalanceAfterPurchase(int n) 
+    {
         int ans = 0;
         int rem = n % 10;
         if(n < 5)
